@@ -3,8 +3,12 @@ import 'package:flutter/material.dart';
 
 final kTitleTextStyle = GoogleFonts.getFont(
   'Ubuntu',
+  color: Colors.white,
   fontSize: 45.0,
-  fontWeight: FontWeight.w500,
 );
 
-
+final kSubtitleTextStyle = GoogleFonts.getFont(
+  'Dancing Script',
+  color: Colors.white,
+  fontSize: 35.0,
+);

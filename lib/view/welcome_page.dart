@@ -22,12 +22,20 @@ class WelcomePage extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(left: 20.0, top: 80.0),
+              padding: const EdgeInsets.only(left: 25.0, top: 80.0),
               child: Text(
-                'Spike Monster',
+                'Spike Monster ',
                 style: kTitleTextStyle,
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.only(left: 25.0, top: 5.0),
+              child: Text(
+                'welcome come back',
+                style: kSubtitleTextStyle,
+              ),
+            ),
+
           ],
         ),
       ),
