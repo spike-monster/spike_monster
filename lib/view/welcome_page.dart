@@ -8,7 +8,8 @@ class WelcomePage extends StatefulWidget {
   State<WelcomePage> createState() => _WelcomePageState();
 }
 
-class _WelcomePageState extends State<WelcomePage> with SingleTickerProviderStateMixin{
+class _WelcomePageState extends State<WelcomePage>
+    with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Image _crowImageSprite1;
   late Image _crowImageSprite2;
@@ -20,7 +21,7 @@ class _WelcomePageState extends State<WelcomePage> with SingleTickerProviderStat
   }
 
   void crowFlying() {
-    if(_animationController.value %5 == 0) {
+    if (_animationController.value % 5 == 0) {
       setState(() {
         _crow = _crowImageSprite1;
       });
@@ -35,13 +36,18 @@ class _WelcomePageState extends State<WelcomePage> with SingleTickerProviderStat
   void initState() {
     super.initState();
     loadCrowImage();
-    _crow = _crowImageSprite1;
+    _crow = _crowImageSprite2;
     _animationController = AnimationController(
-      upperBound: 100,
+      upperBound: 50,
       duration: const Duration(seconds: 5),
       vsync: this,
     );
-    // crowFlying();
+    _animationController.forward();
+    _animationController.addListener(() {
+      setState(() {
+        crowFlying();
+      });
+    });
   }
 
   @override
