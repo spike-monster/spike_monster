@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:spike_monster/constant.dart';
 import 'package:lottie/lottie.dart';
@@ -14,31 +13,35 @@ class _WelcomePageState extends State<WelcomePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late Image _volleyBall;
-  late Image _volleyBallBackGround;
-  bool _isSpike = false;
+  final bool _isSpike = false;
   bool _isAnimationFinished = false;
 
   void loadImages() {
     _volleyBall = Image.asset('images/volleyball.png');
-    _volleyBallBackGround = Image.asset('images/volleyball_background.png');
   }
 
   @override
   void initState() {
     super.initState();
-    _animationController = AnimationController(
-      vsync: this,
-      duration: const Duration(seconds: 4),
-    );
-    _animationController.addListener(() {
-      setState(() {});
-    });
     loadImages();
+    _animationController = AnimationController(
+      duration: const Duration(seconds: 2),
+      vsync: this,
+    )..repeat();
+    // late final Animation<double> animation = CurvedAnimation(
+    //   parent: _animationController,
+    //   curve: Curves.elasticOut,
+    // );
+  }
+
+  @override
+  void dispose() {
+    _animationController.dispose();
+    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
-    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
         width: double.infinity,
@@ -64,8 +67,12 @@ class _WelcomePageState extends State<WelcomePage>
                   ),
                   Visibility(
                     visible: _isAnimationFinished,
-                    child: Expanded(
-                      child: _volleyBall,
+                    child: Hero(
+                      tag: 'volleyball',
+                      child: SizedBox(
+                        width: 100,
+                        child: _volleyBall,
+                      ),
                     ),
                   ),
                 ],
@@ -80,13 +87,9 @@ class _WelcomePageState extends State<WelcomePage>
             ),
             GestureDetector(
               onTap: () {
-                if (_isSpike == false) {
-                  _animationController.forward();
-                  _isSpike = true;
-                  Timer(const Duration(seconds: 2), () {
-                    _isAnimationFinished = true;
-                  });
-                }
+                setState(() {
+                  _isAnimationFinished = true;
+                });
               },
               child: Visibility(
                 visible: !_isAnimationFinished,
@@ -98,10 +101,16 @@ class _WelcomePageState extends State<WelcomePage>
                               'https://assets4.lottiefiles.com/packages/lf20_7Vud3U2XoV.json',
                               controller: _animationController),
                         )
-                      : Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 100, vertical: 250),
-                          child: _volleyBall,
+                      : Hero(
+                          tag: 'volleyball',
+                          child: RotationTransition(
+                            turns: _animationController,
+                            child: Padding(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 100, vertical: 250),
+                              child: _volleyBall,
+                            ),
+                          ),
                         ),
                 ),
               ),
