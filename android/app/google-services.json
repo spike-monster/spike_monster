@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "906144696409",
+    "project_id": "spikemonster-6d46d",
+    "storage_bucket": "spikemonster-6d46d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:906144696409:android:7779632eb352be1a008948",
+        "android_client_info": {
+          "package_name": "com.spike_monster.spike_monster"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "906144696409-678hliaad732lmgmse17jb0hq2105v5n.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBm1kDjJoGDLVEmvx29RA-UYPZtbkoD3dc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "906144696409-678hliaad732lmgmse17jb0hq2105v5n.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
