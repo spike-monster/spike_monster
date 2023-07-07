@@ -3,7 +3,7 @@ import 'package:local_hero/local_hero.dart';
 import 'package:spike_monster/constant.dart';
 import 'package:spike_monster/components/volleyball_animation_widget.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
-
+import 'package:spike_monster/view/register_page.dart';
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
 
@@ -139,6 +139,45 @@ class _WelcomePageState extends State<WelcomePage>
                   ),
                 ),
               ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 30.0),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  children: [
+                    TextField(
+                      onChanged: (value) {
+                        print(value);
+                      },
+                      decoration: const InputDecoration(
+                        labelText: 'User name',
+                      ),
+                    ),
+                    TextField(
+                      obscureText:  true,
+                      decoration:  InputDecoration(
+                        labelText: 'Password',
+                      ),
+                    ),
+                    MaterialButton(
+                      onPressed: () {},
+                      child: const Text('Log in'),
+                    ),
+                    MaterialButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                            MaterialPageRoute(builder: (context) => RegisterPage()));
+                      },
+                      child: const Text('Create an account'),
+                    ),
+                  ],
+                ),
+              ),
+
+
+
+
+
             ],
           ),
         ),
