@@ -89,7 +89,7 @@ class _WelcomePageState extends State<WelcomePage>
                         size: 80,
                         onTap: () {
                           setState(() {
-                            rowTiles.remove(tile);
+                            // rowTiles.remove(tile);
                           });
                         },
                       ),
