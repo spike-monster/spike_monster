@@ -20,6 +20,7 @@ dependencies:
   firebase_core: ^2.14.0
   local_hero: ^0.2.0
   equatable: ^2.0.5
+  animated_text_kit: ^4.2.2
 
 dev_dependencies:
   flutter_test:

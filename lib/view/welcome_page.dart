@@ -1,4 +1,3 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:local_hero/local_hero.dart';
 import 'package:spike_monster/constant.dart';
