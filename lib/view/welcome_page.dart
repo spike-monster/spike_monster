@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:local_hero/local_hero.dart';
 import 'package:spike_monster/constant.dart';
 import 'package:spike_monster/components/volleyball_animation_widget.dart';
+import 'package:animated_text_kit/animated_text_kit.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -67,11 +68,19 @@ class _WelcomePageState extends State<WelcomePage>
                 padding: const EdgeInsets.only(left: 25.0, top: 80.0),
                 child: Row(
                   children: [
-                    Container(
-                      child: Text(
-                        'Spike Monster ',
-                        style: kTitleTextStyle,
+                    DefaultTextStyle(
+                      style: kTitleTextStyle,
+                      child: AnimatedTextKit(
+                        animatedTexts: [
+                          TypewriterAnimatedText(
+                            'Spike Monster',
+                            speed: const Duration(milliseconds: 400),
+                          ),
+                        ],
                       ),
+                    ),
+                    const Expanded(
+                      child: SizedBox(),
                     ),
                     ...rowTiles.map(
                       (tile) => Tile(
