@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:local_hero/local_hero.dart';
 import 'package:spike_monster/constant.dart';
-import 'package:lottie/lottie.dart';
+import 'package:spike_monster/components/volleyball_animation_widget.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -12,12 +14,14 @@ class WelcomePage extends StatefulWidget {
 class _WelcomePageState extends State<WelcomePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
-  late Image _volleyBall;
-  final bool _isSpike = false;
+  late TileModel tile;
   bool _isAnimationFinished = false;
+  List<dynamic> rowTiles = [];
+  List<dynamic> colTiles = [];
 
   void loadImages() {
-    _volleyBall = Image.asset('images/volleyball.png');
+    tile = TileModel(
+        image: Image.asset('images/volleyball.png'), title: 'volleyball');
   }
 
   @override
@@ -28,10 +32,7 @@ class _WelcomePageState extends State<WelcomePage>
       duration: const Duration(seconds: 2),
       vsync: this,
     )..repeat();
-    // late final Animation<double> animation = CurvedAnimation(
-    //   parent: _animationController,
-    //   curve: Curves.elasticOut,
-    // );
+    colTiles.add(tile);
   }
 
   @override
@@ -42,80 +43,96 @@ class _WelcomePageState extends State<WelcomePage>
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(
-        width: double.infinity,
-        decoration: BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            colors: [
-              Colors.orangeAccent.shade700,
-              Colors.orangeAccent.shade200,
-            ],
+    return LocalHeroScope(
+      duration: const Duration(milliseconds: 500),
+      createRectTween: (begin, end) {
+        return RectTween(begin: begin, end: end);
+      },
+      curve: Curves.easeInOut,
+      child: Scaffold(
+        body: Container(
+          width: double.infinity,
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topLeft,
+              colors: [
+                Colors.orangeAccent.shade700,
+                Colors.orangeAccent.shade200,
+              ],
+            ),
           ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 25.0, top: 80.0),
-              child: Row(
-                children: [
-                  Text(
-                    'Spike Monster ',
-                    style: kTitleTextStyle,
-                  ),
-                  Visibility(
-                    visible: _isAnimationFinished,
-                    child: Hero(
-                      tag: 'volleyball',
-                      child: SizedBox(
-                        width: 100,
-                        child: _volleyBall,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(left: 25.0, top: 80.0),
+                child: Row(
+                  children: [
+                    Container(
+                      child: Text(
+                        'Spike Monster ',
+                        style: kTitleTextStyle,
+                      ),
+                    ),
+                    ...rowTiles.map(
+                      (tile) => Tile(
+                        key: ValueKey(tile),
+                        model: tile,
+                        size: 80,
+                        onTap: () {
+                          setState(() {
+                            rowTiles.remove(tile);
+                          });
+                        },
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(left: 25.0, top: 5.0),
+                child: Text(
+                  'Welcome Come Back',
+                  style: kSubtitleTextStyle,
+                ),
+              ),
+              const SizedBox(
+                height: 200.0,
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _isAnimationFinished = true;
+                  });
+                },
+                child: Visibility(
+                  visible: !_isAnimationFinished,
+                  child: Center(
+                    child: RotationTransition(
+                      turns: _animationController,
+                      child: Column(
+                        children: [
+                          ...colTiles.map(
+                            (tile) => Tile(
+                              key: ValueKey(tile),
+                              model: tile,
+                              size: 200,
+                              onTap: () {
+                                setState(() {
+                                  rowTiles.add(tile);
+                                  colTiles.remove(tile);
+                                });
+                              },
+                            ),
+                          ),
+                        ],
                       ),
                     ),
                   ),
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 25.0, top: 5.0),
-              child: Text(
-                'Welcome Come Back',
-                style: kSubtitleTextStyle,
-              ),
-            ),
-            GestureDetector(
-              onTap: () {
-                setState(() {
-                  _isAnimationFinished = true;
-                });
-              },
-              child: Visibility(
-                visible: !_isAnimationFinished,
-                child: Center(
-                  child: _isSpike
-                      ? Padding(
-                          padding: const EdgeInsets.only(top: 50),
-                          child: Lottie.network(
-                              'https://assets4.lottiefiles.com/packages/lf20_7Vud3U2XoV.json',
-                              controller: _animationController),
-                        )
-                      : Hero(
-                          tag: 'volleyball',
-                          child: RotationTransition(
-                            turns: _animationController,
-                            child: Padding(
-                              padding: const EdgeInsets.symmetric(
-                                  horizontal: 100, vertical: 250),
-                              child: _volleyBall,
-                            ),
-                          ),
-                        ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

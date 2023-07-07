@@ -18,6 +18,8 @@ dependencies:
   google_fonts: ^5.1.0
   lottie: ^2.4.0
   firebase_core: ^2.14.0
+  local_hero: ^0.2.0
+  equatable: ^2.0.5
 
 dev_dependencies:
   flutter_test:
