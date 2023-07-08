@@ -114,6 +114,7 @@ class _WelcomePageState extends State<WelcomePage>
                     _isAnimationFinished = true;
                   });
                 },
+
                 child: Visibility(
                   visible: !_isAnimationFinished,
                   child: Center(
