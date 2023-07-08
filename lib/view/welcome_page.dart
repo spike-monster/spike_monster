@@ -4,6 +4,7 @@ import 'package:spike_monster/constant.dart';
 import 'package:spike_monster/components/volleyball_animation_widget.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:spike_monster/view/register_page.dart';
+import 'package:spike_monster/service/auth_service.dart';
 
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
@@ -19,6 +20,7 @@ class _WelcomePageState extends State<WelcomePage>
   bool _isAnimationFinished = false;
   List<dynamic> rowTiles = [];
   List<dynamic> colTiles = [];
+  final _auth = AuthApi();
 
   void loadImages() {
     tile = TileModel(
