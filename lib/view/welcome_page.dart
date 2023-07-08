@@ -4,6 +4,8 @@ import 'package:spike_monster/constant.dart';
 import 'package:spike_monster/components/volleyball_animation_widget.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:spike_monster/view/register_page.dart';
+import 'package:lottie/lottie.dart';
+
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
 
@@ -105,7 +107,7 @@ class _WelcomePageState extends State<WelcomePage>
                 ),
               ),
               const SizedBox(
-                height: 200.0,
+                height: 100.0,
               ),
               GestureDetector(
                 onTap: () {
@@ -154,8 +156,8 @@ class _WelcomePageState extends State<WelcomePage>
                       ),
                     ),
                     TextField(
-                      obscureText:  true,
-                      decoration:  InputDecoration(
+                      obscureText: true,
+                      decoration: InputDecoration(
                         labelText: 'Password',
                       ),
                     ),
@@ -165,19 +167,14 @@ class _WelcomePageState extends State<WelcomePage>
                     ),
                     MaterialButton(
                       onPressed: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => RegisterPage()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => RegisterPage()));
                       },
                       child: const Text('Create an account'),
                     ),
                   ],
                 ),
               ),
-
-
-
-
-
             ],
           ),
         ),
