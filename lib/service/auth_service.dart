@@ -16,6 +16,9 @@ class AuthApi {
       throw Exception('Register fail, password length most greater than 6');
     }
     _auth.createUserWithEmailAndPassword(email: email, password: password);
+    _fireStore.collection('users').add({
+
+    });
   }
 
   Future<void> loginWithEmail({required email, required password}) async {
@@ -33,12 +36,14 @@ class AuthApi {
     return account;
   }
 
-  Future<String> generateUserId() async {
+  Future<String> _generateUserId() async {
     var userCounts = await _fireStore.collection('/user_count').get();
-    int userCount = userCounts.docs.first.get('user_count');
+    int userCount = userCounts.docs.first.get('total_users');
     userCount++;
-    await _fireStore.collection('/user_count').doc().update({
-      'user_count': 10,
+    // SXTthuGydN3Z2XfL0OBg is the ID of user_count in firebase
+    // TODO: find the method to refactor this hard code.
+    await _fireStore.collection('/user_count').doc('SXTthuGydN3Z2XfL0OBg').update({
+      'total_users': userCount,
     });
     return userCount.toString().padLeft(6, '0');
   }

@@ -36,7 +36,6 @@ class _WelcomePageState extends State<WelcomePage>
       vsync: this,
     )..repeat();
     colTiles.add(tile);
-    _auth.generateUserId();
   }
 
   @override
