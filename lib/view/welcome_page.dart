@@ -36,6 +36,7 @@ class _WelcomePageState extends State<WelcomePage>
       vsync: this,
     )..repeat();
     colTiles.add(tile);
+    _auth.generateUserId();
   }
 
   @override
@@ -116,7 +117,6 @@ class _WelcomePageState extends State<WelcomePage>
                     _isAnimationFinished = true;
                   });
                 },
-
                 child: Visibility(
                   visible: !_isAnimationFinished,
                   child: Center(
