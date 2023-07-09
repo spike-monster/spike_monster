@@ -23,6 +23,9 @@ dependencies:
   animated_text_kit: ^4.2.2
   firebase_auth: ^4.6.3
   cloud_firestore: ^4.8.2
+  freezed: ^2.3.5
+  freezed_annotation: ^2.2.0
+  build_runner: ^2.4.6
 
 dev_dependencies:
   flutter_test:
