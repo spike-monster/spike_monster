@@ -17,7 +17,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  late AuthApi _authApi;
+  final AuthApi _authApi = AuthApi();
   late Account _account;
   final players = PlayersImage();
   late Image image;
@@ -30,7 +30,6 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Future<void> initAccount() async {
-    // _authApi = AuthApi();
     // _account = await _authApi.getAccountDetail();
     _account = MockData().account;
   }
