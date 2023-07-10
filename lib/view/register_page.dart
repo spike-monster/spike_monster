@@ -30,7 +30,7 @@ class RegisterPage extends StatelessWidget {
 
                     TextField(
                       onChanged:(value){
-                        var inputName = value;
+                        String inputName = value;
                       },
                       decoration: const InputDecoration(
                           labelText: 'Name',
@@ -41,7 +41,7 @@ class RegisterPage extends StatelessWidget {
                     ),
                     TextField(
                       onChanged: (value){
-                        var inputRegisterEmail = value;
+                        String inputRegisterEmail = value;
                       },
                       decoration: const InputDecoration(
                         labelText: 'E-mail',
@@ -52,7 +52,7 @@ class RegisterPage extends StatelessWidget {
                     ),
                     TextField(
                       onChanged: (value){
-                        var inputRegisterPassword = value;                      },
+                        String inputRegisterPassword = value;                      },
                       decoration: const InputDecoration(
                         labelText: 'Password',
                       ),

@@ -174,6 +174,9 @@ class _WelcomePageState extends State<WelcomePage>
                         )
                       ),
                     ),
+                    const SizedBox(
+                      height: 30.0,
+                    ),
                     MaterialButton(
                       onPressed: () async{
 
@@ -194,6 +197,18 @@ class _WelcomePageState extends State<WelcomePage>
                           'Create an account',
                         style:  TextStyle(
                         fontSize: 18,),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    const Text(
+                      'or sign in with google?',
+                      textAlign: TextAlign.center,
+                      // overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black54,
                       ),
                     ),
                   ],
