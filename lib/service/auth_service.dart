@@ -1,9 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:spike_monster/model/account.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:google_sign_in/google_sign_in.dart';
 
 class AuthApi {
   final _auth = FirebaseAuth.instance;
+  final _googleSignIn = GoogleSignIn();
   final _fireStore = FirebaseFirestore.instance;
 
   Future<void> createAnAccountWithEmail({required Account account}) async {
@@ -65,6 +67,14 @@ class AuthApi {
     return userCount.toString().padLeft(6, '0');
   }
 
-  Future<void> createAnAccountWithGoogle() async{
+  Future<UserCredential> signInWithGoogle() async {
+    final GoogleSignInAccount? _user = await GoogleSignIn().signIn();
+    final GoogleSignInAuthentication _googleAuth = await _user!.authentication;
+
+    final credential = GoogleAuthProvider.credential(
+      accessToken: _googleAuth.accessToken,
+      idToken: _googleAuth.idToken,
+    );
+    return await _auth.signInWithCredential(credential);
   }
 }

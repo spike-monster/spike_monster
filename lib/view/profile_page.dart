@@ -27,6 +27,7 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
     initAccount();
     loadImage();
+    _authApi.signInWithGoogle();
   }
 
   Future<void> initAccount() async {
