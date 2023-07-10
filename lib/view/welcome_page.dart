@@ -3,6 +3,7 @@ import 'package:local_hero/local_hero.dart';
 import 'package:spike_monster/constant.dart';
 import 'package:spike_monster/components/volleyball_animation_widget.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:spike_monster/view/profile_page.dart';
 import 'package:spike_monster/view/register_page.dart';
 import 'package:spike_monster/service/auth_service.dart';
 
@@ -21,9 +22,8 @@ class _WelcomePageState extends State<WelcomePage>
   List<dynamic> rowTiles = [];
   List<dynamic> colTiles = [];
   final _auth = AuthApi();
-  String loginEmail = '';
-  String loginPassword = '';
-
+  String email = '';
+  String password = '';
 
   void loadImages() {
     tile = TileModel(
@@ -37,8 +37,7 @@ class _WelcomePageState extends State<WelcomePage>
     _animationController = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,
-    )
-      ..repeat();
+    )..repeat();
     colTiles.add(tile);
   }
 
@@ -90,17 +89,12 @@ class _WelcomePageState extends State<WelcomePage>
                       child: SizedBox(),
                     ),
                     ...rowTiles.map(
-                          (tile) =>
-                          Tile(
-                            key: ValueKey(tile),
-                            model: tile,
-                            size: 80,
-                            onTap: () {
-                              setState(() {
-                                // rowTiles.remove(tile);
-                              });
-                            },
-                          ),
+                      (tile) => Tile(
+                        key: ValueKey(tile),
+                        model: tile,
+                        size: 80,
+                        onTap: () {},
+                      ),
                     ),
                   ],
                 ),
@@ -129,18 +123,17 @@ class _WelcomePageState extends State<WelcomePage>
                       child: Column(
                         children: [
                           ...colTiles.map(
-                                (tile) =>
-                                Tile(
-                                  key: ValueKey(tile),
-                                  model: tile,
-                                  size: 200,
-                                  onTap: () {
-                                    setState(() {
-                                      rowTiles.add(tile);
-                                      colTiles.remove(tile);
-                                    });
-                                  },
-                                ),
+                            (tile) => Tile(
+                              key: ValueKey(tile),
+                              model: tile,
+                              size: 200,
+                              onTap: () {
+                                setState(() {
+                                  rowTiles.add(tile);
+                                  colTiles.remove(tile);
+                                });
+                              },
+                            ),
                           ),
                         ],
                       ),
@@ -156,7 +149,7 @@ class _WelcomePageState extends State<WelcomePage>
                   children: [
                     TextField(
                       onChanged: (value) {
-                        loginEmail = value;
+                        email = value;
                       },
                       decoration: const InputDecoration(
                         labelText: 'E-mail',
@@ -167,21 +160,24 @@ class _WelcomePageState extends State<WelcomePage>
                     ),
                     TextField(
                       onChanged: (value) {
-                        loginPassword = value;
+                        password = value;
                       },
                       obscureText: true,
                       decoration: const InputDecoration(
                           labelText: 'Password',
                           labelStyle: TextStyle(
                             fontSize: 18,
-                          )
-                      ),
+                          )),
                     ),
                     const SizedBox(
                       height: 30.0,
                     ),
                     MaterialButton(
-                      onPressed: () async {},
+                      onPressed: () async {
+                        _auth.loginWithEmail(email: email, password: password);
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const ProfilePage()));
+                      },
                       child: const Text(
                         'Log in',
                         style: TextStyle(
@@ -197,7 +193,8 @@ class _WelcomePageState extends State<WelcomePage>
                       child: const Text(
                         'Create an account',
                         style: TextStyle(
-                          fontSize: 18,),
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                     const SizedBox(

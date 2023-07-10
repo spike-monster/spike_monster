@@ -6,6 +6,7 @@ import 'package:spike_monster/model/account.dart';
 import 'package:spike_monster/mock_data.dart';
 import 'package:spike_monster/model/character_image.dart';
 import 'package:lottie/lottie.dart';
+import 'package:spike_monster/view/game_store_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({
@@ -27,7 +28,6 @@ class _ProfilePageState extends State<ProfilePage> {
     super.initState();
     initAccount();
     loadImage();
-    _authApi.signInWithGoogle();
   }
 
   Future<void> initAccount() async {
@@ -48,7 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
           Icons.shop,
         ),
         onPressed: () {
-          //TODO: Navigate to Game store.
+
         },
       ),
       body: Container(
@@ -144,8 +144,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   const EdgeInsets.symmetric(horizontal: 8),
                               child: CircleAvatar(
                                 radius: 40.0,
-                                backgroundImage: players.images['setter']
-                                    ['及川'],
+                                backgroundImage: players.images['setter']['及川'],
                               ),
                             ),
                             Padding(
@@ -153,8 +152,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   const EdgeInsets.symmetric(horizontal: 8),
                               child: CircleAvatar(
                                 radius: 40.0,
-                                backgroundImage: players.images['setter']
-                                    ['影山'],
+                                backgroundImage: players.images['setter']['影山'],
                               ),
                             ),
                             Padding(
@@ -162,8 +160,7 @@ class _ProfilePageState extends State<ProfilePage> {
                                   const EdgeInsets.symmetric(horizontal: 8),
                               child: CircleAvatar(
                                 radius: 40.0,
-                                backgroundImage: players.images['spiker']
-                                    ['日向'],
+                                backgroundImage: players.images['spiker']['日向'],
                               ),
                             ),
                           ],
