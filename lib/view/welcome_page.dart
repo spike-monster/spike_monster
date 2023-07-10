@@ -18,10 +18,12 @@ class _WelcomePageState extends State<WelcomePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late TileModel tile;
-  final _anth = AuthApi();
   bool _isAnimationFinished = false;
   List<dynamic> rowTiles = [];
   List<dynamic> colTiles = [];
+  final _auth = AuthApi();
+  String loginEmail='';
+  String loginPassword='';
 
   void loadImages() {
     tile = TileModel(
@@ -151,30 +153,48 @@ class _WelcomePageState extends State<WelcomePage>
                   children: [
                     TextField(
                       onChanged: (value) {
-                        print(value);
+                        loginEmail = value;
                       },
                       decoration: const InputDecoration(
-                        labelText: 'User name',
+                        labelText: 'E-mail',
+                        labelStyle: TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                     TextField(
-                      obscureText: true,
-                      decoration: InputDecoration(
+                      onChanged: (value){
+                          loginPassword = value;
+                      },
+                      obscureText:  true,
+                      decoration:  const InputDecoration(
                         labelText: 'Password',
+                        labelStyle: TextStyle(
+                          fontSize:  18,
+                        )
                       ),
                     ),
                     MaterialButton(
                       onPressed: () async{
 
                       },
-                      child: const Text('Log in'),
+                      child: const Text(
+                          'Log in',
+                        style:  TextStyle(
+                          fontSize: 18,
+                        ),
+                      ),
                     ),
                     MaterialButton(
                       onPressed: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => const RegisterPage()));
                       },
-                      child: const Text('Create an account'),
+                      child: const Text(
+                          'Create an account',
+                        style:  TextStyle(
+                        fontSize: 18,),
+                      ),
                     ),
                   ],
                 ),
