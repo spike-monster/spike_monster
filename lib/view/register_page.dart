@@ -99,11 +99,14 @@ class RegisterPage extends StatelessWidget {
                     ),
                     MaterialButton(
                       onPressed: () {},
-                      child: Text('Create'),
+                      child: const Text('Create'),
                     ),
-                  ])),
-        ]),
+                  ]
+              ),
+            ),
+          ]
 
+        ),
     );
   }
 }
