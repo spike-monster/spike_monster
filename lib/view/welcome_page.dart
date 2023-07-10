@@ -20,7 +20,6 @@ class _WelcomePageState extends State<WelcomePage>
   bool _isAnimationFinished = false;
   List<dynamic> rowTiles = [];
   List<dynamic> colTiles = [];
-  final _auth = AuthApi();
 
   void loadImages() {
     tile = TileModel(
