@@ -64,4 +64,7 @@ class AuthApi {
     });
     return userCount.toString().padLeft(6, '0');
   }
+
+  Future<void> createAnAccountWithGoogle() async{
+  }
 }
