@@ -33,6 +33,14 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: const Icon(
+          Icons.shop,
+        ),
+        onPressed: (){
+          //TODO: Navigate to Game store.
+        },
+      ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 30.0),
         width: double.infinity,
