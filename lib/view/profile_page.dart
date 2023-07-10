@@ -5,6 +5,7 @@ import 'package:spike_monster/service/auth_service.dart';
 import 'package:spike_monster/model/account.dart';
 import 'package:spike_monster/mock_data.dart';
 import 'package:spike_monster/model/character_image.dart';
+import 'package:lottie/lottie.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({
@@ -121,82 +122,54 @@ class _ProfilePageState extends State<ProfilePage> {
                     ],
                   ),
                 ),
-                const SizedBox(height: 10.0,),
+                const SizedBox(
+                  height: 10.0,
+                ),
                 Expanded(
-                  child: Container(
-                    decoration: BoxDecoration(
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.black.withOpacity(0.3),
-                          blurRadius: 2.0,
-                          spreadRadius: 0.0,
-                          offset: const Offset(2.0, 2.0),
-                        )
-                      ],
-                      borderRadius: BorderRadius.circular(20.0),
-                    ),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 20.0, vertical: 20),
-                      decoration: BoxDecoration(
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.15),
-                            blurRadius: 2.0,
-                            spreadRadius: 0.0,
-                            offset: const Offset(2.0, 2.0),
-                          )
-                        ],
-                        borderRadius: BorderRadius.circular(30.0),
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          colors: [
-                            Colors.orangeAccent.shade400,
-                            Colors.orangeAccent.shade200,
-                            Colors.orangeAccent.shade200.withOpacity(1),
+                  child: Column(
+                    children: [
+                      const Expanded(
+                        child: Text(
+                          'Resent Use : ',
+                          textAlign: TextAlign.left,
+                        ),
+                      ),
+                      Expanded(
+                        flex: 2,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8),
+                              child: CircleAvatar(
+                                radius: 40.0,
+                                backgroundImage: players.images['setter']
+                                    ['及川'],
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8),
+                              child: CircleAvatar(
+                                radius: 40.0,
+                                backgroundImage: players.images['setter']
+                                    ['影山'],
+                              ),
+                            ),
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8),
+                              child: CircleAvatar(
+                                radius: 40.0,
+                                backgroundImage: players.images['spiker']
+                                    ['日向'],
+                              ),
+                            ),
                           ],
                         ),
                       ),
-                      child: Column(
-                        children: [
-                          Text(
-                            'Resent Use : ',
-                            textAlign: TextAlign.left,
-                          ),
-                          Expanded(
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 8),
-                                  child: CircleAvatar(
-                                    radius: 40.0,
-                                    backgroundImage: players.images['setter']['及川'],
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 8),
-                                  child: CircleAvatar(
-                                    radius: 40.0,
-                                    backgroundImage: players.images['setter']['影山'],
-                                  ),
-                                ),
-                                Padding(
-                                  padding:
-                                      const EdgeInsets.symmetric(horizontal: 8),
-                                  child: CircleAvatar(
-                                    radius: 40.0,
-                                    backgroundImage: players.images['spiker']['日向'],
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
+                    ],
                   ),
                 ),
               ],

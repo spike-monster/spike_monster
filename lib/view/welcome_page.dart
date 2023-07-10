@@ -3,6 +3,7 @@ import 'package:local_hero/local_hero.dart';
 import 'package:spike_monster/constant.dart';
 import 'package:spike_monster/components/volleyball_animation_widget.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:spike_monster/model/account.dart';
 import 'package:spike_monster/view/register_page.dart';
 import 'package:spike_monster/service/auth_service.dart';
 
@@ -17,6 +18,7 @@ class _WelcomePageState extends State<WelcomePage>
     with SingleTickerProviderStateMixin {
   late AnimationController _animationController;
   late TileModel tile;
+  final _anth = AuthApi();
   bool _isAnimationFinished = false;
   List<dynamic> rowTiles = [];
   List<dynamic> colTiles = [];
@@ -162,7 +164,9 @@ class _WelcomePageState extends State<WelcomePage>
                       ),
                     ),
                     MaterialButton(
-                      onPressed: () {},
+                      onPressed: () async{
+
+                      },
                       child: const Text('Log in'),
                     ),
                     MaterialButton(
