@@ -4,6 +4,8 @@ import 'package:spike_monster/constant.dart';
 import 'package:spike_monster/components/volleyball_animation_widget.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:spike_monster/view/register_page.dart';
+import 'package:spike_monster/service/auth_service.dart';
+
 class WelcomePage extends StatefulWidget {
   const WelcomePage({super.key});
 
@@ -18,6 +20,10 @@ class _WelcomePageState extends State<WelcomePage>
   bool _isAnimationFinished = false;
   List<dynamic> rowTiles = [];
   List<dynamic> colTiles = [];
+  final _auth = AuthApi();
+  String loginEmail = '';
+  String loginPassword = '';
+
 
   void loadImages() {
     tile = TileModel(
@@ -31,7 +37,8 @@ class _WelcomePageState extends State<WelcomePage>
     _animationController = AnimationController(
       duration: const Duration(seconds: 2),
       vsync: this,
-    )..repeat();
+    )
+      ..repeat();
     colTiles.add(tile);
   }
 
@@ -83,16 +90,17 @@ class _WelcomePageState extends State<WelcomePage>
                       child: SizedBox(),
                     ),
                     ...rowTiles.map(
-                      (tile) => Tile(
-                        key: ValueKey(tile),
-                        model: tile,
-                        size: 80,
-                        onTap: () {
-                          setState(() {
-                            // rowTiles.remove(tile);
-                          });
-                        },
-                      ),
+                          (tile) =>
+                          Tile(
+                            key: ValueKey(tile),
+                            model: tile,
+                            size: 80,
+                            onTap: () {
+                              setState(() {
+                                // rowTiles.remove(tile);
+                              });
+                            },
+                          ),
                     ),
                   ],
                 ),
@@ -105,7 +113,7 @@ class _WelcomePageState extends State<WelcomePage>
                 ),
               ),
               const SizedBox(
-                height: 200.0,
+                height: 50.0,
               ),
               GestureDetector(
                 onTap: () {
@@ -121,17 +129,18 @@ class _WelcomePageState extends State<WelcomePage>
                       child: Column(
                         children: [
                           ...colTiles.map(
-                            (tile) => Tile(
-                              key: ValueKey(tile),
-                              model: tile,
-                              size: 200,
-                              onTap: () {
-                                setState(() {
-                                  rowTiles.add(tile);
-                                  colTiles.remove(tile);
-                                });
-                              },
-                            ),
+                                (tile) =>
+                                Tile(
+                                  key: ValueKey(tile),
+                                  model: tile,
+                                  size: 200,
+                                  onTap: () {
+                                    setState(() {
+                                      rowTiles.add(tile);
+                                      colTiles.remove(tile);
+                                    });
+                                  },
+                                ),
                           ),
                         ],
                       ),
@@ -147,37 +156,65 @@ class _WelcomePageState extends State<WelcomePage>
                   children: [
                     TextField(
                       onChanged: (value) {
-                        print(value);
+                        loginEmail = value;
                       },
                       decoration: const InputDecoration(
-                        labelText: 'User name',
+                        labelText: 'E-mail',
+                        labelStyle: TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                     TextField(
-                      obscureText:  true,
-                      decoration:  InputDecoration(
-                        labelText: 'Password',
+                      onChanged: (value) {
+                        loginPassword = value;
+                      },
+                      obscureText: true,
+                      decoration: const InputDecoration(
+                          labelText: 'Password',
+                          labelStyle: TextStyle(
+                            fontSize: 18,
+                          )
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    MaterialButton(
+                      onPressed: () async {},
+                      child: const Text(
+                        'Log in',
+                        style: TextStyle(
+                          fontSize: 18,
+                        ),
                       ),
                     ),
                     MaterialButton(
-                      onPressed: () {},
-                      child: const Text('Log in'),
-                    ),
-                    MaterialButton(
                       onPressed: () {
-                        Navigator.of(context).push(
-                            MaterialPageRoute(builder: (context) => RegisterPage()));
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const RegisterPage()));
                       },
-                      child: const Text('Create an account'),
+                      child: const Text(
+                        'Create an account',
+                        style: TextStyle(
+                          fontSize: 18,),
+                      ),
+                    ),
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    const Text(
+                      'or sign in with google?',
+                      textAlign: TextAlign.center,
+                      // overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.black54,
+                      ),
                     ),
                   ],
                 ),
               ),
-
-
-
-
-
             ],
           ),
         ),
