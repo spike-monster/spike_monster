@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
 
-class RegisterPage extends StatelessWidget {
+class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
+  @override
+  State<RegisterPage> createState() => _RegisterPageState();
+ }
+class _RegisterPageState extends State<RegisterPage> {
+  String name='';
+  String email='';
+  String password='';
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -96,11 +105,12 @@ class RegisterPage extends StatelessWidget {
                       ),
                     ),
                   ],
+                ),
               ),
-            ),
-          ]
+            ]
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
-}
+
