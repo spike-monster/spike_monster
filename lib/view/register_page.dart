@@ -74,43 +74,13 @@ class _RegisterPageState extends State<RegisterPage> {
                       ),
                     ),
                   ),
-                    TextField(
-                      onChanged: (value){},
-                      obscureText:  true,
-                      decoration:  const InputDecoration(
-                        labelText: 'Name',
-                        labelStyle: TextStyle(
-                        fontSize:  18,
-                        ),
-                      ),
-                    ),
-                    TextField(
-                      onChanged: (value){},
-                      obscureText:  true,
-                      decoration:  const InputDecoration(
-                        labelText: 'E-mail',
-                        labelStyle: TextStyle(
-                        fontSize:  18,
-                        ),
-                      ),
-                    ),
-                    TextField(
-                      onChanged: (value){},
-                      obscureText:  true,
-                      decoration:  const InputDecoration(
-                        labelText: 'Password',
-                        labelStyle: TextStyle(
-                        fontSize:  18,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
+                ],
               ),
-            ]
-          ),
+            ),
+          ]
         ),
-      );
-    }
+      ),
+    );
   }
+}
 
