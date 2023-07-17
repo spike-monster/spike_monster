@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:spike_monster/service/auth_service.dart';
+import 'package:spike_monster/model/account.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -9,6 +11,7 @@ class _RegisterPageState extends State<RegisterPage> {
   String name='';
   String email='';
   String password='';
+  final _auth=AuthApi();
 
 
 
@@ -37,7 +40,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 children: [
                   TextField(
                     onChanged: (value) {
-                      String inputName = value;
+                      name = value;
                     },
                     decoration: const InputDecoration(
                       labelText: 'Name',
@@ -48,7 +51,7 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   TextField(
                     onChanged: (value) {
-                      String inputRegisterEmail = value;
+                      email = value;
                     },
                     decoration: const InputDecoration(
                       labelText: 'E-mail',
@@ -59,14 +62,16 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   TextField(
                     onChanged: (value) {
-                      String inputRegisterPassword = value;
+                      password = value;
                     },
                     decoration: const InputDecoration(
                       labelText: 'Password',
                     ),
                   ),
                   MaterialButton(
-                    onPressed: () {},
+                    onPressed: () async{
+                      await _auth.createAnAccountWithEmail(account: Account(name: name, email: email, password: password));
+                    },
                     child: const Text(
                       'Create',
                       style: TextStyle(

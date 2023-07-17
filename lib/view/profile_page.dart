@@ -169,6 +169,36 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ],
             ),
+            Column(
+              children:[
+                const Text(
+                  'Start A Game',
+                  textAlign: TextAlign.center,
+                  overflow: TextOverflow.ellipsis,
+
+                  style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 25,
+                  ),
+                ),
+                MaterialButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'Join Game',
+                    style: TextStyle(
+                      fontSize: 25,),
+                  ),
+                ),
+                MaterialButton(
+                  onPressed: () {},
+                  child: const Text(
+                    'Create Game',
+                    style: TextStyle(
+                      fontSize: 25,),
+                  ),
+                ),
+              ]
+            ),
           ],
         ),
       ),

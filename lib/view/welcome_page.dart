@@ -24,6 +24,10 @@ class _WelcomePageState extends State<WelcomePage>
   final _auth = AuthApi();
   String email = '';
   String password = '';
+<<<<<<< HEAD
+=======
+
+>>>>>>> a5301bc (join page not yet)
 
   void loadImages() {
     tile = TileModel(
@@ -175,8 +179,11 @@ class _WelcomePageState extends State<WelcomePage>
                     MaterialButton(
                       onPressed: () async {
                         _auth.loginWithEmail(email: email, password: password);
+<<<<<<< HEAD
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) => const ProfilePage()));
+=======
+>>>>>>> a5301bc (join page not yet)
                       },
                       child: const Text(
                         'Log in',
