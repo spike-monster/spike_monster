@@ -5,8 +5,6 @@ import 'package:spike_monster/service/auth_service.dart';
 import 'package:spike_monster/model/account.dart';
 import 'package:spike_monster/mock_data.dart';
 import 'package:spike_monster/model/character_image.dart';
-import 'package:lottie/lottie.dart';
-import 'package:spike_monster/view/game_store_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({
