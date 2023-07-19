@@ -5,6 +5,8 @@ import 'package:spike_monster/service/auth_service.dart';
 import 'package:spike_monster/model/account.dart';
 import 'package:spike_monster/mock_data.dart';
 import 'package:spike_monster/model/character_image.dart';
+import 'package:spike_monster/view/join_page.dart';
+import 'package:spike_monster/view/create_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({
@@ -169,35 +171,52 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ],
             ),
+            const Padding(
+              padding: EdgeInsets.only(left: 100),
+            ),
             Column(
-              children:[
-                const Text(
-                  'Start A Game',
-                  textAlign: TextAlign.center,
-                  overflow: TextOverflow.ellipsis,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children:[
 
-                  style: TextStyle(
+                  const Text(
+                    'Start A Game',
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 25,
+                      fontSize: 30,
+                    ),
                   ),
-                ),
-                MaterialButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Join Game',
-                    style: TextStyle(
-                      fontSize: 25,),
+                  const SizedBox(
+                    height: 20,
                   ),
-                ),
-                MaterialButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Create Game',
-                    style: TextStyle(
-                      fontSize: 25,),
+                  MaterialButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const JoinPage()));
+                    },
+                    child: const Text(
+                      'Join Game',
+                      style: TextStyle(
+                        fontSize: 30,),
+                    ),
                   ),
-                ),
-              ]
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  MaterialButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const CreatePage()));
+                    },
+                    child: const Text(
+                      'Create Game',
+                      style: TextStyle(
+                        fontSize: 30,),
+                    ),
+                  ),
+                ]
             ),
           ],
         ),
