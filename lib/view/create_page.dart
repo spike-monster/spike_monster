@@ -17,12 +17,15 @@ class _CreatePageState extends State<CreatePage> {
     return Scaffold(
       body: Center(
         child: Container(
+          width: double.infinity,
           color: Colors.orangeAccent.shade200,
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               const Text(
                 'Create Game',
+                textAlign: TextAlign.center,
                 style: TextStyle(
                 fontSize: 30,
                ),
@@ -32,6 +35,7 @@ class _CreatePageState extends State<CreatePage> {
               ),
               const Text(
                 'Your ID is ',
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   fontSize: 30,
                 ),
