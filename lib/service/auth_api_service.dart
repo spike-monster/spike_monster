@@ -3,7 +3,16 @@ import 'package:spike_monster/model/account.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
-class AuthApi {
+class AuthApiService {
+  AuthApiService._();
+  static AuthApiService? _instance;
+
+  static AuthApiService get instance {
+    _instance ??= AuthApiService._();
+    return _instance!;
+  }
+
+
   final _auth = FirebaseAuth.instance;
   final _googleSignIn = GoogleSignIn();
   final _fireStore = FirebaseFirestore.instance;

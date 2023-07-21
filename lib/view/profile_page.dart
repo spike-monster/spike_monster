@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:spike_monster/constant.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:spike_monster/service/auth_service.dart';
+import 'package:spike_monster/service/auth_api_service.dart';
 import 'package:spike_monster/model/account.dart';
 import 'package:spike_monster/mock_data.dart';
 import 'package:spike_monster/model/character_image.dart';
@@ -18,7 +18,7 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  final AuthApi _authApi = AuthApi();
+  final AuthApiService _authApi = AuthApiService.instance;
   late Account _account;
   final players = PlayersImage();
   late Image image;
