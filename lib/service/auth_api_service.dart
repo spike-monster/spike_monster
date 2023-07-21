@@ -18,10 +18,11 @@ class AuthApiService {
   final _fireStore = FirebaseFirestore.instance;
 
   Future<void> createAnAccountWithEmail({required Account account}) async {
+    //TODO: it should stop before enter create button
     if (account.password.length <= 6) {
       throw Exception('Register fail, password length most greater than 6');
     }
-    _auth.createUserWithEmailAndPassword(
+    final user = _auth.createUserWithEmailAndPassword(
       email: account.email,
       password: account.password,
     );

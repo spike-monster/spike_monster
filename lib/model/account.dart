@@ -7,6 +7,7 @@ class Account {
   int record;
   Image? image;
   String? id;
+  String? idInFirebase;
 
   Account({
     required this.name,
@@ -15,5 +16,6 @@ class Account {
     this.image,
     this.record = 0,
     this.id,
+    this.idInFirebase,
   });
 }
