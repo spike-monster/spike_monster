@@ -172,7 +172,7 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
             const Padding(
-              padding: EdgeInsets.only(left: 100),
+              padding: EdgeInsets.only(left: 160),
             ),
             Column(
                 mainAxisAlignment: MainAxisAlignment.center,
