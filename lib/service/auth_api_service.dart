@@ -14,7 +14,6 @@ class AuthApiService {
 
 
   final _auth = FirebaseAuth.instance;
-  final _googleSignIn = GoogleSignIn();
   final _fireStore = FirebaseFirestore.instance;
 
   Future<void> createAnAccountWithEmail({required Account account}) async {
