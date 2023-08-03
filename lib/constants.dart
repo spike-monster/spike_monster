@@ -1,0 +1,1 @@
+enum Button {spike, set, moveLeft, moveRight}
