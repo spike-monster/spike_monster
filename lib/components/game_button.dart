@@ -1,26 +1,5 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
-
-void main() => runApp(const MyApp());
-
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: GameButton(
-            name: Button.spike,
-            image: const AssetImage('images/button_icon/spike.png'),
-            onPressed: () {},
-          ),
-        ),
-      ),
-    );
-  }
-}
+import '../constants.dart';
 
 class GameButton extends StatelessWidget {
   GameButton({
