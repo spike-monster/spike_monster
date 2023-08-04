@@ -170,83 +170,58 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
             Container(
-              padding: const EdgeInsets.only(left: 150, top: 60, bottom: 60),
+              padding: const EdgeInsets.only(left: 150,),
               child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    const Expanded(
-                      flex: 1,
-                      child: Text(
-                        'Start A Game',
-                        textAlign: TextAlign.center,
-                        overflow: TextOverflow.ellipsis,
+                    const Text(
+                      'Start A Game',
+                      textAlign: TextAlign.center,
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 30,
+                      ),
+                    ),
+
+                    TextField(
+                      decoration: InputDecoration(
+                        labelText: 'Room ID',
+                        border: OutlineInputBorder(),
+                      ),
+                    ),
+
+                    MaterialButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const GamePage()));
+                      },
+                      minWidth: 180,
+                      color: const Color.fromARGB(255, 255, 225, 123),
+                      child: const Text(
+                        'Join',
                         style: TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 30,
+                          fontSize: 25,
                         ),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 15),
-                    ),
-                    // Container(
-                    //   child: Column(
-                    //     children: [
-                    //       TextField(
-                    //         onChanged: (value){},
-                    //
-                    //         decoration: InputDecoration(
-                    //           labelText: 'Room ID',
-                    //           border: OutlineInputBorder(
-                    //             borderRadius: BorderRadius.circular(20.0),
-                    //
-                    //           ),
-                    //         ),
-                    //       ),
-                    //     ],
-                    //   ),
-                    // ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 15),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: MaterialButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const GamePage()));
-                        },
-                        minWidth: 180,
-                        color: const Color.fromARGB(255, 255, 225, 123),
-                        child: const Text(
-                          'Join',
-                          style: TextStyle(
-                            fontSize: 25,
-                          ),
+
+                    MaterialButton(
+                      onPressed: () {
+                        Navigator.of(context).push(MaterialPageRoute(
+                            builder: (context) => const CreatePage()));
+                      },
+                      minWidth: 180,
+                      color: const Color.fromARGB(255, 255, 225, 123),
+                      child: const Text(
+                        'Create',
+                        style: TextStyle(
+                          fontSize: 25,
                         ),
                       ),
                     ),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(vertical: 15),
-                    ),
-                    Expanded(
-                      flex: 1,
-                      child: MaterialButton(
-                        onPressed: () {
-                          Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => const CreatePage()));
-                        },
-                        minWidth: 180,
-                        color: const Color.fromARGB(255, 255, 225, 123),
-                        child: const Text(
-                          'Create',
-                          style: TextStyle(
-                            fontSize: 25,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ]),
+                  ]
+              ),
             ),
           ],
         ),
