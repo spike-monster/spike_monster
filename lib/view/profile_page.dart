@@ -170,7 +170,6 @@ class _ProfilePageState extends State<ProfilePage> {
               ],
             ),
             Column(
-                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
                     'Start A Game',
