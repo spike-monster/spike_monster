@@ -22,7 +22,7 @@ class _ProfilePageState extends State<ProfilePage> {
   late Account _account;
   final players = PlayersImage();
   late Image image;
-
+  String roomID = '' ;
   @override
   void initState() {
     super.initState();
@@ -169,63 +169,159 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ],
             ),
-            Container(
-              padding: const EdgeInsets.only(left: 150,),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    const Text(
-                      'Start A Game',
-                      textAlign: TextAlign.center,
-                      overflow: TextOverflow.ellipsis,
+            Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const Text(
+                    'Start A Game',
+                    textAlign: TextAlign.center,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 30,
+                    ),
+                  ),
+                  TextField(
+                    onChanged: (value) {
+                       roomID = value;
+                    },
+                    // decoration: const InputDecoration(
+                    //   labelText: 'Room ID',
+                    //   labelStyle: TextStyle(
+                    //     fontSize: 25,
+                    //   ),
+                    // ),
+                  ),
+                  MaterialButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const GamePage()));
+                    },
+                    minWidth: 220,
+                    height: 40,
+                    color: const Color.fromARGB(255, 255, 225, 123),
+                    child: const Text(
+                      'Join',
                       style: TextStyle(
-                        fontWeight: FontWeight.bold,
                         fontSize: 30,
                       ),
                     ),
+                  ),
 
-                    TextField(
-                      decoration: InputDecoration(
-                        labelText: 'Room ID',
-                        border: OutlineInputBorder(),
+                  MaterialButton(
+                    onPressed: () {
+                      Navigator.of(context).push(MaterialPageRoute(
+                          builder: (context) => const CreatePage()));
+                    },
+                    minWidth: 220,
+                    height: 40,
+                    color: const Color.fromARGB(255, 255, 225, 123),
+                    child: const Text(
+                      'Create',
+                      style: TextStyle(
+                        fontSize: 30,
                       ),
                     ),
-
-                    MaterialButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const GamePage()));
-                      },
-                      minWidth: 180,
-                      color: const Color.fromARGB(255, 255, 225, 123),
-                      child: const Text(
-                        'Join',
-                        style: TextStyle(
-                          fontSize: 25,
-                        ),
-                      ),
-                    ),
-
-                    MaterialButton(
-                      onPressed: () {
-                        Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => const CreatePage()));
-                      },
-                      minWidth: 180,
-                      color: const Color.fromARGB(255, 255, 225, 123),
-                      child: const Text(
-                        'Create',
-                        style: TextStyle(
-                          fontSize: 25,
-                        ),
-                      ),
-                    ),
-                  ]
-              ),
-            ),
+                  ),
+                ]),
           ],
         ),
       ),
     );
   }
 }
+// Column(
+// mainAxisAlignment: MainAxisAlignment.center,
+// children:[
+//
+// const Text(
+// 'Start A Game',
+// textAlign: TextAlign.center,
+// overflow: TextOverflow.ellipsis,
+//
+// style: TextStyle(
+// fontWeight: FontWeight.bold,
+// fontSize: 30,
+// ),
+// ),
+// const SizedBox(
+// height: 20,
+// ),
+// MaterialButton(
+// onPressed: () {
+// Navigator.of(context).push(MaterialPageRoute(
+// builder: (context) => const JoinPage()));
+// },
+// child: const Text(
+// 'Join Game',
+// style: TextStyle(
+// fontSize: 30,),
+// ),
+// ),
+// const SizedBox(
+// height: 20,
+// ),
+// MaterialButton(
+// onPressed: () {
+// Navigator.of(context).push(MaterialPageRoute(
+// builder: (context) => const CreatePage()));
+// },
+// child: const Text(
+// 'Create Game',
+// style: TextStyle(
+// fontSize: 30,),
+// ),
+// ),
+// ]
+// ),
+// Column(
+// mainAxisAlignment: MainAxisAlignment.center,
+// children: [
+// const Text(
+// 'Start A Game',
+// textAlign: TextAlign.center,
+// overflow: TextOverflow.ellipsis,
+// style: TextStyle(
+// fontWeight: FontWeight.bold,
+// fontSize: 30,
+// ),
+// ),
+//
+// TextField(
+// decoration: InputDecoration(
+// labelText: 'Room ID',
+// border: OutlineInputBorder(),
+// ),
+// ),
+//
+// MaterialButton(
+// onPressed: () {
+// Navigator.of(context).push(MaterialPageRoute(
+// builder: (context) => const GamePage()));
+// },
+// minWidth: 180,
+// color: const Color.fromARGB(255, 255, 225, 123),
+// child: const Text(
+// 'Join',
+// style: TextStyle(
+// fontSize: 25,
+// ),
+// ),
+// ),
+//
+// MaterialButton(
+// onPressed: () {
+// Navigator.of(context).push(MaterialPageRoute(
+// builder: (context) => const CreatePage()));
+// },
+// minWidth: 180,
+// color: const Color.fromARGB(255, 255, 225, 123),
+// child: const Text(
+// 'Create',
+// style: TextStyle(
+// fontSize: 25,
+// ),
+// ),
+// ),
+// ]
+// ),
