@@ -5,7 +5,7 @@ import 'package:spike_monster/service/auth_api_service.dart';
 import 'package:spike_monster/model/account.dart';
 import 'package:spike_monster/mock_data.dart';
 import 'package:spike_monster/model/character_image.dart';
-import 'package:spike_monster/view/join_page.dart';
+import 'package:spike_monster/view/game_page.dart';
 import 'package:spike_monster/view/create_page.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -47,9 +47,7 @@ class _ProfilePageState extends State<ProfilePage> {
         child: const Icon(
           Icons.shop,
         ),
-        onPressed: () {
-
-        },
+        onPressed: () {},
       ),
       body: Container(
         padding: const EdgeInsets.symmetric(horizontal: 50.0, vertical: 30.0),
@@ -171,52 +169,84 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ],
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 160),
-            ),
-            Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children:[
-
-                  const Text(
-                    'Start A Game',
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
+            Container(
+              padding: const EdgeInsets.only(left: 150, top: 60, bottom: 60),
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    const Expanded(
+                      flex: 1,
+                      child: Text(
+                        'Start A Game',
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                        ),
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  MaterialButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const JoinPage()));
-                    },
-                    child: const Text(
-                      'Join Game',
-                      style: TextStyle(
-                        fontSize: 30,),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 15),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  MaterialButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const CreatePage()));
-                    },
-                    child: const Text(
-                      'Create Game',
-                      style: TextStyle(
-                        fontSize: 30,),
+                    // Container(
+                    //   child: Column(
+                    //     children: [
+                    //       TextField(
+                    //         onChanged: (value){},
+                    //
+                    //         decoration: InputDecoration(
+                    //           labelText: 'Room ID',
+                    //           border: OutlineInputBorder(
+                    //             borderRadius: BorderRadius.circular(20.0),
+                    //
+                    //           ),
+                    //         ),
+                    //       ),
+                    //     ],
+                    //   ),
+                    // ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 15),
                     ),
-                  ),
-                ]
+                    Expanded(
+                      flex: 1,
+                      child: MaterialButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const GamePage()));
+                        },
+                        minWidth: 180,
+                        color: const Color.fromARGB(255, 255, 225, 123),
+                        child: const Text(
+                          'Join',
+                          style: TextStyle(
+                            fontSize: 25,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 15),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: MaterialButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const CreatePage()));
+                        },
+                        minWidth: 180,
+                        color: const Color.fromARGB(255, 255, 225, 123),
+                        child: const Text(
+                          'Create',
+                          style: TextStyle(
+                            fontSize: 25,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ]),
             ),
           ],
         ),
