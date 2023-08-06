@@ -6,7 +6,6 @@ import 'package:spike_monster/model/account.dart';
 import 'package:spike_monster/mock_data.dart';
 import 'package:spike_monster/model/character_image.dart';
 import 'package:spike_monster/view/game_page.dart';
-import 'package:spike_monster/view/create_page.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({
@@ -22,7 +21,8 @@ class _ProfilePageState extends State<ProfilePage> {
   late Account _account;
   final players = PlayersImage();
   late Image image;
-  String roomID = '' ;
+  String roomID = '';
+
   @override
   void initState() {
     super.initState();
@@ -79,45 +79,49 @@ class _ProfilePageState extends State<ProfilePage> {
                       ],
                     ),
                   ),
-                  child: Column(
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          CircleAvatar(
-                            radius: 80.0,
-                            backgroundColor: Colors.white.withOpacity(0.1),
-                            child: _account.image ??
-                                Image.asset('images/volleyball_background.png'),
-                          ),
-                          const SizedBox(width: 10.0),
-                          Text(
-                            _account.name,
-                            style: kTitleTextStyle,
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 20.0),
-                      Card(
-                        elevation: 5,
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 10.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              _account.image ??
-                                  Image.asset('images/crown.png', scale: 15),
-                              const SizedBox(width: 13),
-                              Text(
-                                'Record : ${_account.record} wins',
-                                style: GoogleFonts.getFont('Pacifico',
-                                    fontSize: 17.0),
-                              ),
-                            ],
+                  child: Expanded(
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            CircleAvatar(
+                              radius: 80.0,
+                              backgroundColor: Colors.white.withOpacity(0.1),
+                              child: _account.image ??
+                                  Image.asset(
+                                      'images/volleyball_background.png'),
+                            ),
+                            const SizedBox(width: 10.0),
+                            Text(
+                              _account.name,
+                              style: kTitleTextStyle,
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 20.0),
+                        Card(
+                          elevation: 5,
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 10.0),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                _account.image ??
+                                    Image.asset('images/crown.png', scale: 15),
+                                const SizedBox(width: 13),
+                                Text(
+                                  'Record : ${_account.record} wins',
+                                  style: GoogleFonts.getFont('Pacifico',
+                                      fontSize: 17.0),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
                 const SizedBox(
@@ -169,60 +173,92 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
               ],
             ),
-            Column(
-                children: [
-                  const Text(
-                    'Start A Game',
-                    textAlign: TextAlign.center,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 30,
-                    ),
-                  ),
-                  TextField(
-                    onChanged: (value) {
-                       roomID = value;
-                    },
-                    // decoration: const InputDecoration(
-                    //   labelText: 'Room ID',
-                    //   labelStyle: TextStyle(
-                    //     fontSize: 25,
-                    //   ),
-                    // ),
-                  ),
-                  MaterialButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const GamePage()));
-                    },
-                    minWidth: 220,
-                    height: 40,
-                    color: const Color.fromARGB(255, 255, 225, 123),
-                    child: const Text(
-                      'Join',
-                      style: TextStyle(
-                        fontSize: 30,
-                      ),
-                    ),
-                  ),
+            Expanded(
+              child: Container(
+                padding: const EdgeInsets.symmetric(vertical: 60,horizontal: 100),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
 
-                  MaterialButton(
-                    onPressed: () {
-                      Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => const CreatePage()));
-                    },
-                    minWidth: 220,
-                    height: 40,
-                    color: const Color.fromARGB(255, 255, 225, 123),
-                    child: const Text(
-                      'Create',
-                      style: TextStyle(
-                        fontSize: 30,
+                    const Expanded(
+                      child: Text(
+                        'Start A Game',
+                        textAlign: TextAlign.center,
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 30,
+                        ),
                       ),
                     ),
-                  ),
-                ]),
+                    const Expanded(
+                      child: SizedBox(
+                        height: 15,
+                      ),
+                    ),
+                    Expanded(
+                      child: TextField(
+                        onChanged: (value) {
+                          roomID = value;
+                        },
+                        decoration: const InputDecoration(
+                          filled: true,
+                          fillColor: Color.fromARGB(255, 244, 242, 222),
+                          border: OutlineInputBorder(),
+                          labelText: 'Room ID',
+                          labelStyle: TextStyle(
+                            fontSize: 25,
+
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Expanded(
+                      child: SizedBox(
+                        height: 15,
+                      ),
+                    ),
+                    Expanded(
+                      child: MaterialButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const GamePage()));
+                        },
+                        minWidth: 220,
+                        color: const Color.fromARGB(255, 255, 225, 123),
+                        child: const Text(
+                          'Join',
+                          style: TextStyle(
+                            fontSize: 25,
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Expanded(
+                      child: SizedBox(
+                        height: 15,
+                      ),
+                    ),
+                    Expanded(
+                      child: MaterialButton(
+                        onPressed: () {
+                          Navigator.of(context).push(MaterialPageRoute(
+                              builder: (context) => const GamePage()));
+                        },
+                        minWidth: 220,
+                        color: const Color.fromARGB(255, 255, 225, 123),
+                        child: const Text(
+                          'Create',
+                          style: TextStyle(
+                            fontSize: 25,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ),
           ],
         ),
       ),
